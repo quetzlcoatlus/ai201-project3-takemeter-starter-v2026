@@ -10,26 +10,51 @@ More substantial posts than others? A lot are just statements that take 5 second
 
 # Category Ideas
 
-**Suggestion = Proposes something concrete the reader could do.**
-Along with 5 you can also make that rule apply to every route, so you have to defeat ALL trainers in an area before moving on.
+**Suggestion = Sincerely proposes something concrete the reader could do, whether phrased as an instruction ("you should…") or as the writer's own experience ("I've found that hosting helps…").**
+```You should play platinum and either heart gold or soul silver```
 
-**Explanation = Gives factual information, such as a bare fact, or explains how or why something works. Can be about topics such as game mechanics, lore, data, how something was mode, using specific details. Enthusiastic opener doesn't disqualify from an explanation**
-The log of the attack order is really cool! It's interesting that most of the damage was done by fighting moves that proc'd after Foresight went off (there were a few fighting moves that failed due to Wonder Guard prior to Foresight)
+```Sounds like you need to start playing some rom hacks. They are usually based off Gen III games so you’ll feel right at home while getting to experience some new stories / Pokémon```
 
-**Opinion = Takes a position on Pokemon as a general matter (species, games, designs, franchise decisions) as a preference or judgement that someone could disagree with. Judging one's own result or the art in the post doesn't count. A preference stated as a joke is still opinion. Answering "what's your favourite X" is opinion however it's phrased.**
-Yeah, quite sad, isn't it? BW2 and USUM were absolutely full with cameos, it was so enjoyable. Not sure why they step back. Even in Legends ZA, there are way too little "cameos" from XY, despite being in the same city.
+**Explanation = States a fact or explains how or why something works (game mechanics, lore, data, how something was made), where the point is what's true rather than what the writer prefers.**
+```It should be noted that there is no Switch game that Spinda can come from and go into Home. Spinda is in BDSP, but because of a coding error, it can not go to Home. You can't even bring one from Pokemon Go because those are set patterns and as such, can not be transferred to Home.```
 
-**Reaction = Response to the post with a feeling, joke, question or quick praise or criticism, or tells a personal moment without taking a position. Doesn't explain or argue anything.**
-The power of friendship vs the power of friend-shaped
-this is modern art
+```Officially, none of them get plural forms```
+
+**Opinion = Takes a position on Pokémon in general (species, types, games, designs, franchise decisions), including a favourite, even when it's phrased as a joke.**
+```My favourite has always been and will always be Jynx. Totally dig Smoochum too. I know they have fans but … most people hate them and it’s unfortunate.```
+
+```Poison all the way, baby. I've never had as much fun playing competitive as I have with my monotype poison team. And there are just so many cool mons. Second is definitely ground.```
+
+**Reaction = Responds to the post with a feeling, joke, question, quick praise or criticism, or a personal moment or result, without explaining, advising, or taking a position on Pokémon in general.**
+```Such an elegant depiction of the pokemon. Lovely art!```
+
+```Zangoose -> Zangeese```
+
+## Decision Checklist
+
+Apply in order and stop at the first step that matches. The Boundaries and Mixed Comment Rule below explain each step.
+
+1. Spam, self-promotion, bot reply, or deleted? → **drop** (Exclusion rule)
+2. Contains a sincere, standalone recommendation of an action the reader could take? → **suggestion** (Boundaries 3, 6, 7; Mixed rule 1)
+3. States facts or explains how something works? → **explanation**, unless the facts are there to justify a judgement → **opinion** (Boundaries 1, 8; Mixed rule 1)
+4. Takes a position on Pokémon in general that's visible in the text? → **opinion**. If it also reacts to the post, use most-words to choose between **opinion** and **reaction** (Boundaries 2, 5, 7; Mixed rule 2)
+5. Anything else → **reaction**
 
 ## Boundaries
 
-If the takeaway is a judgement or preference, it's an opinion, even with facts. It's an explanation only if the takeaway is how something works or what's true.
+1. **Explanation vs opinion.** If the takeaway is a judgement or preference, it's opinion, even with facts in it. It's explanation only if the takeaway is how something works or what's true. Explanation wins only when it's a separate point.
+2. **Opinion vs reaction.** Judging the post itself (this art, this trailer) or your own result ("I got Ghost, not bad") is reaction. Opinion needs a claim about Pokémon beyond the post.
+3. **Joke advice is reaction.** If a suggestion obviously isn't meant to be followed ("Step 1: buy every game"), it's reaction. The joke has to be in the content (absurd or impossible advice). Laughter markers like "lol" or "😂" don't make sincere advice a joke.
+4. **An enthusiastic opener doesn't disqualify** explanation or suggestion ("Really cool! It's because Foresight…").
+5. **Label what the text shows.** If the label depends on context the comment doesn't show, label from the text alone. If the text doesn't show what's being judged ("Same, the second one is way better"), it's reaction.
+6. **Suggestion vs explanation.** It's suggestion if it recommends an action ("you should", "try", "use", "you need to", or an imperative) or says an action helps ("I've found that hosting helps"). It's explanation if it only says what's possible or true ("you can get Ditto at…", "it's found in…").
+7. **Suggestion vs opinion.** A recommendation the reader can't act on, like a wish aimed at Game Freak ("GF should bring back the Battle Frontier"), is opinion even though it uses "should".
+8. **Hedges don't change the label.** Phrases like "I think", "pretty sure" or "IIRC" don't change the label, because nothing here is verified and every comment is read in good faith. A hedged fact ("I think Spinda can't transfer because of a coding error") is still explanation. Only an actual question is reaction.
 
 ## Mixed Comment Rule
 
-If a comment explains a complete, standalone suggestion or explanation (full clause, not a fragment), that label wins: suggestion > explanation > opinion > reaction. Otherwise, use the label the comment spends the most words on.
+1. If a comment contains a complete, standalone suggestion or explanation (a full clause, not a fragment), that label wins, with suggestion > explanation. An explanation doesn't win if its facts are there to justify a judgement (Boundary 1).
+2. Otherwise, between opinion and reaction, use the label the comment spends the most words on.
 
 ## Exclusion rule
 
@@ -103,7 +128,7 @@ Explanation
 Reaction
 ```Poor man was so lonely he died on the spot```
 
-Reaction
+Opinion
 ```That was such an elaborate trailer, I'm definitely a big fan on these crazy deep lore introductions to new pokemon.```
 
 Reaction
@@ -112,7 +137,7 @@ Reaction
 Reaction
 ```I had already fully IV and EV trained my Mew from BDSP to prepare. Didn't realize I'd be getting another Mew a few days later...😂```
 
-Opinion
+Reaction
 ```I got Ghost, not a bad one at all!```
 
 ## vent thread
@@ -130,7 +155,7 @@ Reaction
 
 ```Sounds like you need to start playing some rom hacks. They are usually based off Gen III games so you’ll feel right at home while getting to experience some new stories / Pokémon```
 
-``````You should play platinum and either heart gold or soul silver``````
+```You should play platinum and either heart gold or soul silver```
 
 ```I've found that hosting Tera Raids helps a lot with the more annoying aspects. If you don't check that you're ready while other people join, you can cancel the raid if someone decides to bring a Moltres to fight a Coalossal. Honestly though I've found that even if one person brings a bad pokemon, if the other 3 pokemon are decent then you still have a good shot in a five star or lower. I've found that going random works sometimes, but sometimes you either end up in a 3 or 4 star raid or you end up looking at a pokemon with a difficult type combination that you lack answers for, and you end up being dead weight.```
 
@@ -154,3 +179,29 @@ Explanation/Opinion
 
 Opinion/Reaction
 ```H20. Drown yer enemies with wata```
+
+# Boundary Practice (synthetic, not for labels.csv)
+
+Opinion
+```Scizor's Technician boosts Bullet Punch to 60 BP, and with STAB it OHKOs most frail sweepers before they can move. Easily the best priority user ever made.```
+
+Explanation
+```You can get a Ditto from the raid dens at Lake of Outrage, and they come with good IVs pretty often.```
+
+Opinion
+```Every artist draws Gengar with this grin and honestly it's always the best version of him.```
+
+Suggestion
+```Just throw a Master Ball at it lol, that's literally what it's for```
+
+Reaction
+```Wait, doesn't Foresight only remove the Ghost immunity? I thought Wonder Guard would still block the fighting moves.```
+
+Suggestion
+```You need to play Colosseum, it's the most underrated game in the whole series.```
+
+Opinion
+```Finally got my shiny Ralts after 3,000 resets!! Shiny Gardevoir is the best shiny in the game, no contest.```
+
+Reaction
+```Same, the second one is way better```

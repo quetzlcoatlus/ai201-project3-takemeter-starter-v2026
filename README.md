@@ -54,35 +54,55 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `Suggestion`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** Sincerely proposes something concrete the reader could do, whether phrased as an instruction ("you should…") or as the writer's own experience ("I've found that hosting helps…").
 
 **Example 1:**
->
+>You should play platinum and either heart gold or soul silver
 
 **Example 2:**
->
+>Sounds like you need to start playing some rom hacks. They are usually based off Gen III games so you’ll feel right at home while getting to experience some new stories / Pokémon
+
+### `Explanation`
+
+**Definition:** States a fact or explains how or why something works (game mechanics, lore, data, how something was made), where the point is what's true rather than what the writer prefers.
+
+**Example 1:**
+>It should be noted that there is no Switch game that Spinda can come from and go into Home. Spinda is in BDSP, but because of a coding error, it can not go to Home. You can't even bring one from Pokemon Go because those are set patterns and as such, can not be transferred to Home
+
+**Example 2:**
+>Officially, none of them get plural forms
+
+### `Opinion`
+
+**Definition:** Takes a position on Pokémon in general (species, types, games, designs, franchise decisions), including a favourite, even when it's phrased as a joke.
+
+**Example 1:**
+>My favourite has always been and will always be Jynx. Totally dig Smoochum too. I know they have fans but … most people hate them and it’s unfortunate
+
+**Example 2:**
+>Poison all the way, baby. I've never had as much fun playing competitive as I have with my monotype poison team. And there are just so many cool mons. Second is definitely ground.
+
+### `Reaction`
+
+**Definition:** Responds to the post with a feeling, joke, question, quick praise or criticism, or a personal moment or result, without explaining, advising, or taking a position on Pokémon in general.
+
+**Example 1:**
+>Such an elegant depiction of the pokemon. Lovely art!
+
+**Example 2:**
+>Zangoose -> Zangeese
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** Explanation vs opinion.
 
 **The decision rule I used every time:**
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
 
-
+If the takeaway is a judgement or preference, it's opinion, even with facts in it. It's explanation only if the takeaway is how something works or what's true. Explanation wins only when it's a separate point.
 
 ---
 
