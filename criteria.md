@@ -51,63 +51,43 @@ whether you hit them:
 
 ---
 
-## 1.
+## 1. Overall accuracy
 
-<!-- Your criterion. It must name a number. -->
+Overall accuracy is at least **0.80** on the held-out test split, on all three seeds.
 
-
-
-**Why this target:**
-
-
+**Why this target:** With four labels a random guesser gets 25%, and always guessing `Reaction` (about half of my random sample of 24) would get roughly 35–40% once I top up the thin labels. 0.80 is 24 of the ~30 test posts, so at most 6 wrong. It matches my consistency target (criterion 4): I'm asking the model to agree with my labels about as often as I expect to agree with myself, which is the most my labels can support.
 
 ---
 
-## 2.
+## 2. Per-label performance
 
-<!-- Your criterion. -->
+On every seed, `Reaction` and `Opinion` each have an F1 of at least **0.60**, `Suggestion` at least **0.45**, and `Explanation` at least **0.40**.
 
-
-
-**Why this target:**
-
-
+**Why this target:** `Reaction` and `Opinion` are my biggest labels, so they should do about as well as the model does overall. `Suggestion` gets a looser floor because it's thin (0 of 24 in my random sample, so it had to be sampled on purpose) and will only have about 5 test posts, where one miss moves F1 a lot. It still has strong surface cues like "you should" and "try", though. `Explanation` gets the loosest floor because it's thin *and* sits on my hardest boundary, where a post full of facts can still be an opinion.
 
 ---
 
-## 3.
+## 3. Balance
 
-<!-- Your criterion. -->
+No label is more than **40%** of `labels.csv`, and no label is less than **15%** (at least 30 of 200 posts).
 
-
-
-**Why this target:**
-
-
+**Why this target:** In my random sample `Reaction` came out at about 50% and `Suggestion` at 0%. Left alone, the model could learn to guess `Reaction` and still pass a weak accuracy target. The brief's 70% cap is too loose for four labels. 15% is my relaxed floor for `Suggestion` and `Explanation` if they turn out hard to find. A perfectly balanced split would be 25% each, and 15% still puts about 4–5 of each in the test split.
 
 ---
 
-## 4.
+## 4. Consistency
 
-<!-- Your criterion. -->
+When I re-label a random 30 of my own posts at least three days later, without looking at the original labels, I match my first label on at least **80%** of them (24 of 30).
 
-
-
-**Why this target:**
-
-
+**Why this target:** My decision checklist is ordered and is meant to give one answer per post, so most labels should come out the same the second time. But 5 of my first 24 sampled comments went into my Hard Cases as difficult two-label (about 20%), so I expect some of those to flip. If I'm under 80%, the problem is my rules, not the model.
 
 ---
 
-## 5.
+## 5. Confidence
 
-<!-- Your criterion. -->
+On every seed, accuracy on the model's most-confident third of test posts is at least **0.20** higher than on its least-confident third.
 
-
-
-**Why this target:**
-
-
+**Why this target:** With ~30 test posts each third is about 10 posts, so 0.20 means at least 2 more right out of 10. I expect short, clear posts like "Nice art" to be both confident and correct, and the opinion/explanation mixes to be the unsure ones. If the gap is smaller than this, the confidence score can't tell me which predictions to double-check.
 
 ---
 
