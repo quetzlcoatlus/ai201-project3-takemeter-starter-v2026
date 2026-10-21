@@ -5,6 +5,7 @@
 #
 # Delete the examples below and put yours in.
 
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+explanation: States a fact or explains how or why something works (game mechanics, lore, data, how something was made), where the point is what's true rather than what the writer prefers.
+opinion: Takes a position on Pokémon in general (species, types, games, designs, official content, franchise decisions), including a favourite, a prediction, or a self-labelled headcanon, even when it's phrased as a joke.
+reaction: Responds to the post with a feeling, joke, genuine question, praise or criticism of fan-made content, a pleasantry, or a personal moment, memory or result, without explaining, advising, or taking a position on Pokémon in general.
+suggestion: Sincerely proposes something concrete the reader could do, whether phrased as an instruction ("you should…"), as the writer's own experience ("I've found that hosting helps…"), or as a wish for something specific the OP could make ("I want to see a Scyther scythe").
