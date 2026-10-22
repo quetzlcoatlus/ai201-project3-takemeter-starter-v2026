@@ -236,8 +236,21 @@ Did better on suggestion at the cost of explanation and opinion completely. It s
 
 ## Run Log — Before
 
+Had to retrain before this because the results from the previous training run weren't cached for the jupyter notebook. Had to rerun some cells to get the required functions initialized.
+
 <!-- Five criteria across three seeds. The notebook's section 6 prints the
      spread table; the Target and Verdict columns are yours. -->
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.429 | 0.571 | 0.400 | 0.171 |
+| Macro F1 | 0.278 | 0.473 | 0.259 | 0.214 |
+| F1 — `explanation` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `opinion` | 0.000 | 0.538 | 0.000 | 0.538 |
+| F1 — `reaction` | 0.519 | 0.571 | 0.522 | 0.053 |
+| F1 — `suggestion` | 0.593 | 0.783 | 0.516 | 0.266 |
+
+Accuracy moved more than 10 points
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
