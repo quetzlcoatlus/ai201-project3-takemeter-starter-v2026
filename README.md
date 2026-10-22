@@ -213,22 +213,24 @@ of next unit's variance. --> 161 train / 35 val / 35 test.
 <!-- Both models on the same posts. `python baseline.py --trained results.json`
      prints this table for you. -->
 
-| Measure | Baseline | Trained | Difference |
-|---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Measure | Baseline with Labels | Baseline without Labels | Trained | Difference between Trained and Untrained with Labels |
+|---|---|---|---|---|
+| Overall accuracy | 0.400 | 0.600 | 0.429 | +0.029 |
+| Macro F1 | 0.299 | 0.596 | 0.278 | -0.022 |
+| F1 — `explanation` | 0.471 | 0.471 | 0.000 | -0.471 |
+| F1 — `opinion` | 0.545 | 0.615 | 0.000 | -0.545 |
+| F1 — `reaction` | 0.182 | 0.667 | 0.519 | +0.337 |
+| F1 — `suggestion` | 0.000 | 0.632 | 0.593 | +0.593 |
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
+I predict the trained model will do better on the highly context dependent labels which rely a lot on the definition, boundaries and other rule constraints not in the label_definitions.txt document. Better than 0% on suggestion at least.
 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
-
-
+Did better on suggestion at the cost of explanation and opinion completely. It seems like the label definitions aren't worth much (seems like a net negative mostly) without the additional rules developed in notes.md.
 
 ---
 
