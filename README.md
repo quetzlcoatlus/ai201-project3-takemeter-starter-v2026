@@ -288,11 +288,11 @@ Accuracy moved more than 10 points
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1  | Overall accuracy on all seeds | >= .8 | MISSED | The accuracies for each run were significantly lower than 0.8. It also varied a lot per seed. |
+| 2 | F1 class lower bounds | R+O>=0.6, S>=0.45, E>=0.4 | MISSED | F1 scores were lower than the bounds I set on all except suggestion. |
+| 3 | Label balance | .15 <= label_counts <= .4 | MET | No class of post in the dataset is outside the bounds. |
+| 4 | Relabel consistency | >= 80% relabeling 30 random posts | MET | I did a couple runs of relabeling random posts. Didn't do great, maybe 60% on the first run but I ended up with 100% on a second after self-correcting. |
+| 5 | Accuracy on most-confident vs least confident | Highest third - Lowest third >= 0.2 | MET | Confidence score differences are above 0.2. ```python -c "import json; [print(r['seed'], round(r['confidence']['accuracy_most_confident_third'] - r['confidence']['accuracy_least_confident_third'], 3)) for r in json.load(open('results_three_seeds_before.json'))]"``` |
 
 **Diagnoses**
 
@@ -305,7 +305,7 @@ Accuracy moved more than 10 points
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
 
-
+Training loss went from 1.37 to 1.29 over 3 epochs, which is slightly better than pure guessing (ln(4) = 1.386). Average confidence is about 0.30 as well which is not that much higher than 0.25 from guessing. We have 161 training posts, batch size 16 with 11 updates per epoch. So that's 33 updates in total with a learning rate at 2e-5. That might not be enough to learn a 4-way classification boundary. Suggestion and reaction have the most and least words respectively, so it's possible the model latched onto length rather than content as the qualifying factor. It's possible we need more training to understand, for instance, "what the takeaway is" etc. for the difference between Explanation and Opinion. Ruled out labeling imbalance and consistency for the most part I think with the agreement report and criterion 3. 
 
 ---
 
@@ -352,26 +352,47 @@ Accuracy moved more than 10 points
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** Increased EPOCHS from 3 to 10 and evaluate the performance change
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** Low F1 scores, accuracy, and low confidence indicated signaled wasn't sufficient.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy on all seeds | >=0.8 | 0.629 | 0.6 | 0.6 | MISSED |
+| 2. F1 class lower bounds | Reaction & Opinion - 0.6, Suggestion - 0.45, Explanation - 0.4 | 0.571,0.471,0.778,0.714 | 0.6,0.5,0.8,0.4 | 0.429,0.632,0.696,0.571 | MISSED |
+| 3. Label balance | .15 <= label_counts <= .4 |  |  |  | MET |
+| 4. Relabel consistency | I get at least 80% when relabeling 30 |  |  |  | MET |
+| 5. Accuracy on most-confident greater than least confident | Most confident - .2 >= Least confident | 0.545 | 0.455 | 0.273 | MET |
+
+| true \ predicted | explanation | opinion | reaction | suggestion |
+|---|---|---|---|---|
+| **explanation** | 5 | 1 | 1 | 0 |
+| **opinion** | 1 | 4 | 3 | 1 |
+| **reaction** | 0 | 3 | 6 | 1 |
+| **suggestion** | 1 | 0 | 1 | 7 |
 
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
 
+It did help, though it didn't flip any criterion from MISSED to MET. Every measure improved on every seed:
 
+| Measure | Before (42 / 7 / 2024) | After (42 / 7 / 2024) |
+|---|---|---|
+| Overall accuracy | 0.429 / 0.571 / 0.400 | 0.629 / 0.600 / 0.600 |
+| Macro F1 | 0.278 / 0.473 / 0.259 | 0.634 / 0.575 / 0.582 |
+| F1 — `explanation` | 0.000 / 0.000 / 0.000 | 0.714 / 0.400 / 0.571 |
+| F1 — `opinion` | 0.000 / 0.538 / 0.000 | 0.471 / 0.500 / 0.632 |
+| Accuracy spread across seeds | 0.171 | 0.029 |
+
+- **The model now predicts all four labels.** Before, the explanation and opinion columns of the confusion matrix were all zeros on seeds 42 and 2024. After, explanation and opinion have an F1 above 0 on every seed.
+- **It's much more stable.** Accuracy moved 0.171 across seeds before and only 0.029 after, so the after numbers aren't a lucky split.
+- **Its confidence means something now.** Average confidence went from about 0.30 (barely above the 0.25 of guessing) to 0.52–0.55 when right, against 0.44–0.47 when wrong. Before, it was almost the same either way (0.29 vs. 0.29 on seed 7).
+
+That matches the diagnosis: 3 epochs (33 updates) was too little training, and the model fell back on rough patterns. 10 epochs gave it enough updates to start using the content of the posts.
 
 ---
 
@@ -379,13 +400,15 @@ Accuracy moved more than 10 points
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
+**Criterion 1, overall accuracy ≥ 0.80 (got 0.600–0.629).** 0.80 of 35 test posts is 28 right, and the model gets 21–22, so it's about 6 posts short on every seed. More than a third of its mistakes are opinion/reaction swaps (see criterion 2), so that boundary is where most of the missing accuracy is. I'd collect more posts near that boundary and make Boundary 2 easier to apply. My own first relabel round was only about 60%, which suggests my labels weren't consistent enough at first to support 80% from a model. I stopped because the brief allows one improvement, and labelling and relabelling a new batch is a bigger job than one run.
 
+**Criterion 2, per-label F1 floors.** Suggestion (0.70–0.80) and explanation (0.40–0.71) met their floors on every seed, though explanation only just met it on seed 7, at exactly 0.40. The miss is all opinion and reaction. Opinion was below 0.60 on seeds 42 and 7 (0.471, 0.500), and reaction was below 0.60 on seeds 42 and 2024 (0.571, 0.429). Across the three seeds, 7 opinions were called reaction and 9 reactions were called opinion. That's 16 of the 41 total errors, going both ways. I'd add more training examples where the only difference is whether the claim is about the post or about Pokémon in general. I stopped for the same reason as criterion 1.
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
 
-
+I meant opinion vs. reaction to depend on *what* is being judged (Pokémon in general vs. this post or my own result), but the model seems to separate them by tone, and because both are short, evaluative and enthusiastic it swaps them in both directions (16 of 41 errors across seeds). Suggestion, which has explicit cue words like "you should" and "try", is the label where what the model learned is closest to what I meant (F1 0.70–0.80).
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
