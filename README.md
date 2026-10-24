@@ -254,29 +254,30 @@ Accuracy moved more than 10 points
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy >= .8 on all seeds | 0.8 | 0.429 | 0.571 | 0.4 | MISS |
+| 2. F1 class lower bounds | Reaction & Opinion - 0.6, Suggestion - 0.45, Explanation - 0.4 | 0.519,0,0.593,0 | 0.571,0.538,0.783,0 | 0.522,0,0.516,0 | MISS |
+| 3. Label balance | .15 <= label_counts <= .4 |  |  |  | MET |
+| 4. Relabel consistency | I get at least 80% when relabeling 30 |  |  |  | MET |
+| 5. Accuracy on most-confident greater than least confident | Most confident - .2 >= Least confident | 0.727 | 0.273 | 0.364 | MET |
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| true \ predicted | explanation | opinion | reaction | suggestion |
+|---|---|---|---|---|
+| **explanation** | 0 | 0 | 2 | 5 |
+| **opinion** | 0 | 0 | 7 | 2 |
+| **reaction** | 0 | 0 | 7 | 3 |
+| **suggestion** | 0 | 0 | 1 | 8 |
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
 
-
+7 predicted reactions for opinion. It seems like the model for this run only learned rough rules for reaction and suggestion and didn't predict anything as opinion or explanation. 
 
 ---
 
@@ -316,7 +317,7 @@ Accuracy moved more than 10 points
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** 25 / 30 = 83%
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -338,28 +339,15 @@ Accuracy moved more than 10 points
      written rule two different ways on 30 posts, that is direct evidence about
      what you did across your own 200. -->
 
-**1.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
+| Post | Staff said | I said | My call, and why | Pile
+|---|---|---|---|---|
+| I tracked sleep against session quality for eleven weeks. Under seven… | `analysis` | `reaction` | I called it reaction because the post was talking about an individual experience. It's also talking about an individual's takeaway rather than a general one. I can understand why it's possibly more of an analysis though. | a |
+| The club championship scoring changed in 2019 from top-6 to top-10. S… | `analysis` | `reaction` | I said reaction because, while there is a verifiable fact, I thought the claim wasn't necessarily true. So I put it under reaction since it felt more based on "feeling". But that's also me going based on feeling on some level. Maybe decision rule 4 would cover this since it's mostly analysis. If it's purely checkable fact and not "true" then I think it falls into pile a. | a |
+| Ran the same loop in 4C and in 24C within a fortnight, same effort by… | `analysis` | `reaction` | Similar to previous. I said reaction because it seemed unreasonable and based on individual experience. They used a checkable fact to justify an subjective claim. | a |
+| The 10K route was remeasured in 2021 and came out 60 metres long. Eve… | `analysis` | `hot_take` | I chose hot_take because again I thought the fact was unreasonable. If the measurement is different on a certain year that doesn't imply the race changed that year. So since the fact didn't seem to make sense I put it as a hot take. Does it count as support if the fact is interpretably wrong? | b |
+| Three of us ran the same session on the same day, different shoes, wi… | `analysis` | `hot_take` | Same as the above disagreement. I thought the claim was unreasonable but it had a checkable fact. | b |
 
-**2.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**What the pattern in my disagreements tells me:**
-
-
-
+**What the pattern in my disagreements tells me:** I think I'm letting my notion of what these labels are from my prior experience leak into my labeling potentially. So that's a bias I would need to account for if I was to consider a model's or my own classification. Also, there was some ambiguity I noticed with analysis vs hot_take with interpretation of "support offered". That might be something I'd tighten in the definition individually. Main takeaways are: bias from learned experience on the taxonomy and it's okay to tighten ambiguous wording.
 ---
 
 ## The Improvement
